@@ -40,11 +40,11 @@ There are 4 open ports : 80 (**HTTP**), 135 (**MSRPC**), 445 (**SMB**) and 5985 
 
 So now, we are going to look the website. We have a Pop-up which contain a authentification. We can try to use admin/admin...
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/web_lock.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/web_lock.png)
 
 And, sometimes, it works :)
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/website.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/website.png)
 
 When we explore the website, we find this page with an upload form. Here, we can make a link with the *upload* and *SMB*, and we can exploit a *SCF File Attacks*.
 
@@ -69,7 +69,7 @@ sudo responder -wrf --lm -v -I tun0
 
 Then, upload the file with the website and wait a little.
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/hash_responder.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/hash_responder.png)
 
 We receive a connection with a user and a hash.
 
@@ -109,7 +109,7 @@ And execute it :
 
 Once **WinPEAS** finish, we can see that the *spoolsv* process is working. So, we can check if it is vulnerable with the ***NightMare*** exploit.
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/spoolsv.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/spoolsv.png)
 
 We search on github a exploit of CVE-2021-1675 and we find this [one](https://github.com/mtthwstffrd/calebstewart-CVE-2021-1675). We upload the .ps1 payload on the machine :
 ```markdown
@@ -133,15 +133,15 @@ The exploit add a new user in the local admin group. So, we gonna create a new l
 Import-Module .\bad.ps1
 Invoke-Nightmare -DriverName "Xerox" -NewUser "{RANDOM_USERNAME}" -NewPassword "{RANDOM_PASSWORD}" 
 ```
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/exploited.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/exploited.png)
 
 Finally, open a new session with the new user and you will be in the Administrator group.
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/net_user.png)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/net_user.png)
 
 Go in ````C:\Users\Administrator\Desktop\````, and made a ````type root.txt````
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Driver/root.jpg)
+![alt text](https://github.com/Vssksj/Write-up/blob/main/HackTheBox/Driver/img/root.jpg)
 
 And BOOM, we have the root flag !
 
