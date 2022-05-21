@@ -121,7 +121,7 @@ In *Daniel*'s machine:
 
 Now, go in our web browser and we have access to the site.
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Pandora/web_pandora.jpg)
+![alt text](https://github.com/Vssksj/Write-up/tree/main/HackTheBox/Pandora/IMG/web_pandora.jpg)
 
 As you see, there is a login/password page. We test admin/admin ; admin/password but no result.
 
